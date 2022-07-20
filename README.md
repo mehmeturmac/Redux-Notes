@@ -1,5 +1,7 @@
 # Redux Notes App
 
+> https://notes-redux.netlify.app/
+
 ---
 
 ![Notes App](./img/Notes.png)

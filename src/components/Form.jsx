@@ -13,9 +13,12 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addNote({ id: nanoid(), note, color }));
-    let randomColor = `#${((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0')}`;
-    setColor(randomColor);
+    if (note) {
+      dispatch(addNote({ id: nanoid(), note, color }));
+      let randomColor = `#${((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0')}`;
+      setColor(randomColor);
+      setNote('');
+    }
   };
 
   return (
