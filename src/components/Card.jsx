@@ -21,20 +21,20 @@ function Card(item) {
   const handleEdit = () => {
     setEdit(true);
     dispatch(editNote({ id: item.item.id, note: value, color: item.item.color }));
-    setSuccess('Edited!');
+    setSuccess('- Edited! -');
     setTimeout(() => setSuccess(null), 2000);
   };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(item.item.note);
-    setSuccess('Copied!');
+    setSuccess('- Copied! -');
     setTimeout(() => setSuccess(null), 2000);
   };
 
   return (
     <>
-      <Flex>
-        <Box w={200} h={150} bg={item.item.color} boxShadow="lg">
+      <Flex boxShadow="xl">
+        <Box w={200} h={160} bg={item.item.color}>
           <Flex justifyContent="space-between" bg="none" m={1.5}>
             <Text fontSize={15} bg="green" visibility={false} mr={2}>
               {success}

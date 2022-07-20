@@ -10,6 +10,7 @@ export const notesSlice = createSlice({
         color: '#999999',
       },
     ],
+    activeFilter: '',
   },
   reducers: {
     addNote: (state, action) => {
@@ -23,8 +24,11 @@ export const notesSlice = createSlice({
       const filtered = state.items.filter((item) => item.id !== action.payload);
       state.items = filtered;
     },
+    search: (state, action) => {
+      state.activeFilter = action.payload;
+    },
   },
 });
 
-export const { addNote, editNote, delNote } = notesSlice.actions;
+export const { addNote, editNote, delNote, search } = notesSlice.actions;
 export default notesSlice.reducer;

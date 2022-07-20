@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addNote } from '../redux/notes/notesSlice';
 
 function Form() {
-  const [color, setColor] = useState('#03a9f4');
+  const [color, setColor] = useState(`#${((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0')}`);
   const [note, setNote] = useState('');
 
   const dispatch = useDispatch();
@@ -14,11 +14,13 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addNote({ id: nanoid(), note, color }));
+    let randomColor = `#${((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0')}`;
+    setColor(randomColor);
   };
 
   return (
     <Flex justifyContent="center" mt={5}>
-      <Box w="40%" alignItems="center" bg="white" p={3} boxShadow="lg">
+      <Box w="40%" alignItems="center" bg="white" p={3} boxShadow="xl">
         <form onSubmit={handleSubmit} style={{ backgroundColor: 'white' }}>
           <Textarea borderRadius={0} bg={color} border="none" rows={4} placeholder="Enter your note here..." boxShadow="lg" value={note} onChange={(e) => setNote(e.target.value)} />
           <Flex justifyContent="end" mt={3} bg="white">
