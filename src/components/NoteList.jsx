@@ -7,7 +7,7 @@ import Card from './Card';
 function NoteList() {
   const items = useSelector((state) => state.notes.items);
   const activeFilter = useSelector((state) => state.notes.activeFilter);
-  const filteredItems = items.filter((item) => item.note.includes(activeFilter));
+  const filteredItems = items.filter((item) => item.note.toLowerCase().includes(activeFilter.toLowerCase()));
 
   return (
     <Flex justifyContent="center" mt={10}>
