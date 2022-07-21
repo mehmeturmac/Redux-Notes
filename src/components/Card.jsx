@@ -41,13 +41,13 @@ function Card(item) {
             </Text>
             <Flex bg="none" my={1}>
               <Circle size="20px" bg="green.400" color="white" ml={1}>
-                <Icon as={CopyIcon} w={3.5} bg="none" onClick={handleCopy} />
+                <Icon as={CopyIcon} w={3} bg="none" onClick={handleCopy} />
               </Circle>
               <Circle size="20px" bg="orange.400" color="white" ml={1}>
                 <Icon as={edit ? EditIcon : CheckIcon} w={3.5} bg="none" onClick={() => (edit ? setEdit(false) : handleEdit())} />
               </Circle>
               <Circle size="20px" bg="red.400" color="white" ml={1}>
-                <Icon as={DeleteIcon} w={3.5} bg="none" onClick={onOpen} />
+                <Icon as={DeleteIcon} w={3} bg="none" onClick={onOpen} />
               </Circle>
             </Flex>
           </Flex>
