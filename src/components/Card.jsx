@@ -56,7 +56,7 @@ function Card(item) {
               </Circle>
             </Flex>
           </Flex>
-          <Textarea borderRadius={0} bg={edit ? 'none' : 'white'} border="none" rows={5} readOnly={edit} value={content} resize="none" onChange={(e) => setContent(e.target.value)} />
+          <Textarea borderRadius={0} bg={edit ? 'none' : 'rgba(255,255,255,0.5)'} border="none" rows={5} readOnly={edit} value={content} resize="none" onChange={(e) => setContent(e.target.value)} />
         </Box>
       </Flex>
       <Modal size="xs" isOpen={isOpen} onClose={onClose} isCentered>
