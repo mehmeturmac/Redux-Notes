@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Icon, Textarea, Flex, Box, Button, Input } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
-import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { addNote } from '../redux/notes/notesSlice';
 
@@ -13,8 +12,8 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (note) {
-      dispatch(addNote({ id: nanoid(), note, color }));
+    if (note.length > 3) {
+      dispatch(addNote({ content: note, color }));
       let randomColor = `#${((Math.random() * 0xffffff) << 0).toString(16).padStart(6, '0')}`;
       setColor(randomColor);
       setNote('');

@@ -7,7 +7,7 @@ import { delNote, editNote } from '../redux/notes/notesSlice';
 
 function Card(item) {
   const [edit, setEdit] = useState(true);
-  const [value, setValue] = useState(item.item.note);
+  const [value, setValue] = useState(item.item.content);
   const [success, setSuccess] = useState('');
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -20,13 +20,13 @@ function Card(item) {
 
   const handleEdit = () => {
     setEdit(true);
-    dispatch(editNote({ id: item.item.id, note: value, color: item.item.color }));
+    dispatch(editNote({ id: item.item.id, content: value, color: item.item.color }));
     setSuccess('Saved!');
     setTimeout(() => setSuccess(null), 2000);
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(item.item.note);
+    navigator.clipboard.writeText(item.item.content);
     setSuccess('Copied!');
     setTimeout(() => setSuccess(null), 2000);
   };
