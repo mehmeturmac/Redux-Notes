@@ -34,7 +34,7 @@ function Header() {
           <Text textAlign="center" color="gray" fontSize={25} fontWeight="semibold">
             Notes App
           </Text>
-          <Input placeholder="Search..." mt={5} borderRadius={20} bg="white" boxShadow="lg" onChange={(e) => dispatch(search(e.target.value))} />
+          <Input placeholder="Search..." _placeholder={{ color: 'gray' }} mt={5} borderRadius={20} bg="white" boxShadow="lg" onChange={(e) => dispatch(search(e.target.value))} />
         </Box>
       </Flex>
     </header>

@@ -28,7 +28,17 @@ function Form() {
     <Flex justifyContent="center" mt={5}>
       <Box w={['90%', '70%', '50%', '40%']} alignItems="center" bg="white" p={3} boxShadow="xl">
         <form onSubmit={handleSubmit} style={{ backgroundColor: 'white' }}>
-          <Textarea borderRadius={0} bg={color} border="none" rows={4} placeholder="Enter your note here..." boxShadow="lg" value={content} onChange={(e) => setContent(e.target.value)} />
+          <Textarea
+            borderRadius={0}
+            bg={color}
+            border="none"
+            rows={4}
+            placeholder="Enter your note here..."
+            _placeholder={{ color: 'gray.300' }}
+            boxShadow="lg"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
           <Flex justifyContent="end" mt={3} bg="white">
             {error && <div>{error}</div>}
             <Input bg="white" w={70} type="color" variant="none" value={color} onChange={(e) => setColor(e.target.value)} />
