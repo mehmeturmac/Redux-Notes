@@ -4,11 +4,22 @@
 
 ---
 
-![Notes App](./img/Notes.png)
+![Notes App](./img/Main.png)
 
 ---
 
-- Responsive design with [chakra-ui](https://chakra-ui.com/)
+- API: [mockapi.io](https://mockapi.io)
+
+- [chakra-ui](https://chakra-ui.com/)
+
+- Responsive design
+
+- Light/Dark Mode
+
+<p float="left">
+  <img src="./img/Light.png" height="600" />
+  <img src="./img/Mobile.png" height="600" /> 
+</p>
 
 ## License
 
