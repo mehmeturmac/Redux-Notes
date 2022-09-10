@@ -11,7 +11,7 @@ function Header() {
 
   const handleUser = () => {
     const username = window.prompt('Enter your username?');
-    if (username.length > 0) {
+    if (username.length > 0 && username.length < 30) {
       setUser(username);
       localStorage.setItem('user', username);
     } else {
