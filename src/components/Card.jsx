@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DeleteIcon, CopyIcon, EditIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import { DeleteIcon, CopyIcon, EditIcon, CheckIcon } from '@chakra-ui/icons';
 import { Icon, Circle, Flex, Box, Textarea, Text, Button, useDisclosure } from '@chakra-ui/react';
 import { Modal, ModalBody, ModalFooter, ModalContent } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ function Card(item) {
   const [edit, setEdit] = useState(true);
   const [content, setContent] = useState(item.item.content);
   const [color, setColor] = useState(item.item.color);
-  const [visable, setVisable] = useState(false);
+  const [visable, setVisable] = useState(item.item.checked ? true : false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [success, setSuccess] = useState(item.item.checked ? 'Complated!' : '');
@@ -33,9 +33,11 @@ function Card(item) {
     await dispatch(updateNoteAsync({ id: item.item.id, content, color, checked: !item.item.checked }));
     if (item.item.checked) {
       setSuccess('Incompleted!');
+      setVisable(false);
       setTimeout(() => setSuccess(null), 1500);
     } else {
       setSuccess('Complated!');
+      setVisable(true);
     }
   };
 
@@ -79,7 +81,7 @@ function Card(item) {
             onChange={(e) => setContent(e.target.value)}
             {...(edit && item.item.checked ? { filter: 'auto', blur: '3px' } : {})}
             onMouseOver={() => setVisable(true)}
-            onMouseOut={() => setVisable(false)}
+            onMouseOut={() => setVisable(item.item.checked ? true : false)}
           />
           {visable && (
             <Circle
@@ -90,14 +92,17 @@ function Card(item) {
               mb={1}
               mr={1}
               border="2px"
-              borderColor="white"
-              bg={item.item.checked ? 'red' : 'green'}
+              borderColor={item.item.checked ? 'green' : '#f72414'}
+              boxShadow="0 1px 2px #ffbeb8"
+              _hover={item.item.checked ? { color: 'white' } : { borderWidth: '4px', color: 'green' }}
+              bg={item.item.checked ? 'green' : 'white'}
               color="white"
               ml={1}
               onMouseOver={() => setVisable(true)}
+              onMouseOut={() => setVisable(item.item.checked ? true : false)}
               onClick={handleCheck}
             >
-              <Icon as={item.item.checked ? CloseIcon : CheckIcon} w={3} bg="none" />
+              <Icon as={CheckIcon} w={3} bg="none" />
             </Circle>
           )}
         </Box>
